@@ -4,4 +4,10 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "agents>=1.4.0",
+    "fastapi>=0.115.12",
+    "openai>=1.79.0",
+    "openai-agents>=0.0.15",
+    "uvicorn>=0.34.2",
+]
