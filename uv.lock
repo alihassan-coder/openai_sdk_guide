@@ -612,6 +612,7 @@ dependencies = [
     { name = "fastapi" },
     { name = "openai" },
     { name = "openai-agents" },
+    { name = "pydantic" },
     { name = "uvicorn" },
 ]
 
@@ -621,6 +622,7 @@ requires-dist = [
     { name = "fastapi", specifier = ">=0.115.12" },
     { name = "openai", specifier = ">=1.79.0" },
     { name = "openai-agents", specifier = ">=0.0.15" },
+    { name = "pydantic", specifier = ">=2.11.4" },
     { name = "uvicorn", specifier = ">=0.34.2" },
 ]
 
