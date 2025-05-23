@@ -11,7 +11,12 @@ dependencies = [
     "fastapi>=0.115.12",
     "openai>=1.79.0",
     "openai-agents>=0.0.15",
+    "prompt-toolkit>=3.0.51",
+    "pyaudio>=0.2.14",
     "pydantic>=2.11.4",
     "pymongo>=4.13.0",
+    "python-dotenv>=1.1.0",
+    "pyttsx3>=2.98",
+    "speechrecognition>=3.14.3",
     "uvicorn>=0.34.2",
 ]
