@@ -1,5 +1,5 @@
 from openai import AsyncOpenAI
-from agents import Agent, OpenAIChatCompletionsModel, Runner
+from agents import Agent, OpenAIChatCompletionsModel, Runner, handoff, RunContextWrapper
 import os
 from dotenv import load_dotenv
 
@@ -25,11 +25,19 @@ english_agent = Agent(
     model=OpenAIChatCompletionsModel(model="gemini-2.0-flash", openai_client=client),
 )
 
+def on_handoff(agent: Agent, ctx: RunContextWrapper[None]):
+    agent_name = agent.name
+    print(f"Handing off to {agent_name}...")
+
+
 triage_agent = Agent(
     name="Triage agent",
     instructions="Handoff to the appropriate agent based on the language of the request.",
     model=OpenAIChatCompletionsModel(model="gemini-2.0-flash", openai_client=client),
-    handoffs=[urdu_agent, english_agent],
+    handoffs=[
+            handoff(urdu_agent, on_handoff=lambda ctx: on_handoff(urdu_agent, ctx)),
+            handoff(english_agent, on_handoff=lambda ctx: on_handoff(english_agent, ctx))
+    ],
 )
 
 history = []
